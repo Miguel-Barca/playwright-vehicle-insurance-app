@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { tricentisLogoLocator, automobileLocator, camperLocator, truckLocator, motorcycleLocator, selectedInsuranceLocator } from '../Locators/pageLocators.ts';
+import { tricentisLogoLocator, automobileLocator, camperLocator, truckLocator, motorcycleLocator, selectedInsuranceLocator } from '../locators/pageLocators.ts';
 
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
