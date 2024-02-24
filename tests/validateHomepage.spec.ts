@@ -5,11 +5,6 @@ import { selectCategory } from './page-objects/homepage.ts';
 test.describe('Homepage - Selecting Categories', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
-        // Assert visibility of common elements
-        await expect(truckLocator(page)).toBeVisible();
-        await expect(automobileLocator(page)).toBeVisible();
-        await expect(motorcycleLocator(page)).toBeVisible();
-        await expect(camperLocator(page)).toBeVisible();
     });
 
     // Assert correct redirect to each category form. After that, we go back to the homepage
@@ -20,7 +15,7 @@ test.describe('Homepage - Selecting Categories', () => {
                 type: 'summary',
                 description: `Selecting ${category} Category and going back to the Homepage`,
             });
-            
+
             await selectCategory(page, category);
             await expect(selectedInsuranceLocator(page)).toContainText(`${category} Insurance`);
 
@@ -32,6 +27,10 @@ test.describe('Homepage - Selecting Categories', () => {
 });
 
 async function validateHomepage(page: Page) {
-    // Verify page title
+    // // Assert visibility of common elements
+    await expect(truckLocator(page)).toBeVisible();
+    await expect(automobileLocator(page)).toBeVisible();
+    await expect(motorcycleLocator(page)).toBeVisible();
+    await expect(camperLocator(page)).toBeVisible();
     await expect(page).toHaveTitle("Tricentis Vehicle Insurance");
 }
