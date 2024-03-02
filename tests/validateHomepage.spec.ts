@@ -26,7 +26,7 @@ test.describe('Homepage - Selecting Categories', () => {
     });
 });
 
-async function validateHomepage(page: Page) {
+export async function validateHomepage(page: Page) {
     // // Assert visibility of common elements
     await expect(truckLocator(page)).toBeVisible();
     await expect(automobileLocator(page)).toBeVisible();
