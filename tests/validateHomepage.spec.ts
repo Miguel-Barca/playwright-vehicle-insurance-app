@@ -1,6 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
-import { automobileLocator, camperLocator, truckLocator, motorcycleLocator, selectedInsuranceLocator, tricentisLogoLocator } from './locators/pageLocators.ts';
-import { selectCategory } from './page-objects/homepage.ts';
+import { automobileLocator, camperLocator, truckLocator, motorcycleLocator, selectedInsuranceLocator, tricentisLogoLocator } from '.././Resources/locators/pageLocators.ts';
+import { selectCategory } from '.././Resources/page-objects/homepage.ts';
 
 //***  */
 test.describe('Homepage - Selecting Categories', () => {
