@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { selectCategory } from './page-objects/homepage.ts';
 import { automobileLocator, camperLocator, truckLocator, motorcycleLocator, selectedInsuranceLocator, tricentisLogoLocator } from './locators/pageLocators.ts';
 import { validateHomepage } from '../tests/validateHomepage.spec.ts';
-import { fillMotorcycleDataForm, nextPage } from './page-objects/motorcycleForms.ts';
+import { fillDataForms, nextPage } from './page-objects/motorcycleForms.ts';
 
 test.describe('Form - Enter Vehicle Data', () => {
     test.beforeEach(async ({ page }) => {
@@ -27,8 +27,9 @@ test.describe('Form - Enter Vehicle Data', () => {
                 await selectCategory(page, category);
                 await expect(selectedInsuranceLocator(page)).toContainText(`${category} Insurance`);
 
-                await fillMotorcycleDataForm(page, category);
-                page.screenshot
+                //await fillMotorcycleDataForm(page, category);
+                await fillDataForms[`${category}`](page, category);
+                await page.screenshot({ path: `screenshots/${category}.png` });
                 await nextPage(page);
             }
         });

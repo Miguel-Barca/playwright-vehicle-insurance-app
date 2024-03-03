@@ -3,12 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "webpack -p",
+    "test": "karma start"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.41.2",
-    "@types/node": "^20.11.17"
+    "@types/jasmine": "^5.1.4",
+    "@types/node": "^20.11.17",
+    "jasmine-core": "^5.1.2",
+    "karma": "^6.4.3",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-jasmine": "^5.1.0",
+    "karma-webpack": "^5.0.1",
+    "ts-loader": "^9.5.1",
+    "typedoc": "^0.25.9",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-dev-server": "^5.0.2"
   }
 }
