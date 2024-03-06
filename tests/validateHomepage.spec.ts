@@ -5,7 +5,7 @@ import { selectCategory } from '.././Resources/page-objects/homepage.ts';
 //***  */
 test.describe('Homepage - Selecting Categories', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('/');
+        await page.goto('');
     });
 
     // Assert correct redirect to each category form. After that, we go back to the homepage
