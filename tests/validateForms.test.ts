@@ -6,7 +6,7 @@ import { fillDataForms, fillDataFormsFromCSV, nextPage } from '.././Resources/pa
 
 test.describe('Form - Enter Vehicle Data - Harcoded', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('https://sampleapp.tricentis.com');
+        await page.goto('');
     });
 
     // Assert correct redirect to each category form. After that, we go back to the homepage
@@ -38,7 +38,7 @@ test.describe('Form - Enter Vehicle Data - Harcoded', () => {
 
 test.describe('Form - Enter Vehicle Data - From CSV', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('/');
+        await page.goto('');
     });
 
     // Assert correct redirect to each category form. After that, we go back to the homepage
