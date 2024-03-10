@@ -76,10 +76,10 @@ export const fillDataFormsFromCSV = {
 export const fillInsurantsData = {
     Insurants: async (page: Page, category: string) => {
         readInsurantsCsv();
-        let record = recordsInsurants[counterForInsurantsCSV];
-        //Grab data from Datamanager and fill form
-        //for (const record of recordsInsurants) {
-        for ( let i = 0; counterForInsurantsCSV < recordsInsurants.length; i++) {
+        
+        for ( counterForInsurantsCSV; counterForInsurantsCSV < recordsInsurants.length; counterForInsurantsCSV++) {
+            let record = recordsInsurants[counterForInsurantsCSV];
+
             await insurantDataFormLocators.FIRST_NAME(page).click();
             await insurantDataFormLocators.FIRST_NAME(page).fill(record.FIRST_NAME);
             await insurantDataFormLocators.LAST_NAME(page).click();
@@ -98,11 +98,10 @@ export const fillInsurantsData = {
             await page.locator('label').filter({ hasText: record.HOBBIES }).locator('span').click();
             await insurantDataFormLocators.website(page).click();
             await insurantDataFormLocators.website(page).fill(record.WEBSITE);
-            await page.getByRole('button', { name: 'Open' }).click();
+            //await page.getByRole('button', { name: 'Open' }).click();
             //await page.locator('#picturecontainer').setInputFiles('P1002449.JPG');
             counterForInsurantsCSV += 1;
         }
-        //}
     }
 };
 
