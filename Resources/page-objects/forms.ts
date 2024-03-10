@@ -3,6 +3,9 @@ import * as vehicleDataFormLocators from '../locators/vehicleDataFormLocators';
 import * as insurantDataFormLocators from '../locators/insurantDataLocators';
 import { Page } from '@playwright/test';
 
+let counterForInsurantsCSV = 0;
+let counterForVehiclesCSV = 0;
+
 export const fillDataForms = {
     Motorcycle: async (page: Page, category: string) => {
         // Logic to fill data form for Motorcycle Forms
@@ -14,7 +17,6 @@ export const fillDataForms = {
         await vehicleDataFormLocators.ENGINE_PERFORMANCE(page).fill('11');
         await vehicleDataFormLocators.MANUFACTURE_DATE(page).click();
         await vehicleDataFormLocators.MANUFACTURE_DATE(page).fill('11/11/2000');
-
         await vehicleDataFormLocators.NUMBER_OF_SEATS_MOTORCYCLE(page).selectOption('1');
         await vehicleDataFormLocators.LIST_PRICE(page).click();
         await vehicleDataFormLocators.LIST_PRICE(page).fill('1000');
@@ -41,7 +43,6 @@ export const fillDataFormsFromCSV = {
             await vehicleDataFormLocators.ENGINE_PERFORMANCE(page).fill(record.ENGINE_PERFORMANCE);
             await vehicleDataFormLocators.MANUFACTURE_DATE(page).click();
             await vehicleDataFormLocators.MANUFACTURE_DATE(page).fill(record.MANUFACTURE_DATE);
-    
             await vehicleDataFormLocators.NUMBER_OF_SEATS_MOTORCYCLE(page).selectOption(record.NUMBER_OF_SEATS_MOTORCYCLE);
             await vehicleDataFormLocators.LIST_PRICE(page).click();
             await vehicleDataFormLocators.LIST_PRICE(page).fill(record.LIST_PRICE);
@@ -73,24 +74,35 @@ export const fillDataFormsFromCSV = {
 };
 
 export const fillInsurantsData = {
-    Insurants: async (page: Page) => {
+    Insurants: async (page: Page, category: string) => {
         readInsurantsCsv();
-
+        let record = recordsInsurants[counterForInsurantsCSV];
         //Grab data from Datamanager and fill form
-        for (const record of recordsInsurants) {
-            await  insurantDataFormLocators.FIRST_NAME(page).fill(record.FIRST_NAME);
-            await  insurantDataFormLocators.LAST_NAME(page).fill(record.LAST_NAME);
-            await  insurantDataFormLocators.BIRTH_DATE(page).fill(record.DATE_OF_BIRTH);
-            //await  insurantDataFormLocators.GENDER_FEMALE(page).fill(record.DATE_OF_BIRTH);
-            await  insurantDataFormLocators.streetaddress(page).fill(record.STREET_ADDRESS);
-            await  insurantDataFormLocators.country(page).fill(record.COUNTRY);
-            await  insurantDataFormLocators.city(page).fill(record.CITY);
-            await  insurantDataFormLocators.occupation(page).click().select(record.OCCUPATION);
-            //await  insurantDataFormLocators.todo(page).select(record.HOBBIES);
-            await  insurantDataFormLocators.website(page).fill(record.WEBSITE);
-
-            //FIRST_NAME,LAST_NAME,DATE_OF_BIRTH,GENDER,STREET_ADDRESS,COUNTRY,,OCCUPATION,HOBBIES,
+        //for (const record of recordsInsurants) {
+        for ( let i = 0; counterForInsurantsCSV < recordsInsurants.length; i++) {
+            await insurantDataFormLocators.FIRST_NAME(page).click();
+            await insurantDataFormLocators.FIRST_NAME(page).fill(record.FIRST_NAME);
+            await insurantDataFormLocators.LAST_NAME(page).click();
+            await insurantDataFormLocators.LAST_NAME(page).fill(record.LAST_NAME);
+            await page.getByRole('textbox', { name: 'MM/DD/YYYY' }).click();
+            await page.getByRole('textbox', { name: 'MM/DD/YYYY' }).fill(record.DATE_OF_BIRTH);
+            await insurantDataFormLocators.BIRTH_DATE(page).click();
+            await insurantDataFormLocators.BIRTH_DATE(page).fill(record.DATE_OF_BIRTH);
+            await page.getByText('Male', { exact: true }).click(); // refactor
+            await insurantDataFormLocators.streetaddress(page).click();
+            await insurantDataFormLocators.streetaddress(page).fill(record.STREET_ADDRESS);
+            await insurantDataFormLocators.country(page).selectOption(record.COUNTRY);
+            await insurantDataFormLocators.city(page).click();
+            await insurantDataFormLocators.city(page).fill(record.CITY);
+            await page.locator('#occupation').selectOption(record.OCCUPATION);
+            await page.locator('label').filter({ hasText: record.HOBBIES }).locator('span').click();
+            await insurantDataFormLocators.website(page).click();
+            await insurantDataFormLocators.website(page).fill(record.WEBSITE);
+            await page.getByRole('button', { name: 'Open' }).click();
+            //await page.locator('#picturecontainer').setInputFiles('P1002449.JPG');
+            counterForInsurantsCSV += 1;
         }
+        //}
     }
 };
 

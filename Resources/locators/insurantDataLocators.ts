@@ -1,5 +1,5 @@
-export const FIRST_NAME = (page) => (page).locator('input[id=firstName]');
-export const LAST_NAME = (page) => (page).locator('input[id=lastName]');
+export const FIRST_NAME = (page) => (page).locator('input[id=firstname]');
+export const LAST_NAME = (page) => (page).locator('input[id=lastname]');
 export const BIRTH_DATE = (page) => (page).locator('input[id=birthdate]');
 export const GENDER_MALE = (page) => (page).locator('input[id=gendermale]');
 export const GENDER_FEMALE = (page) => (page).locator('input[id=genderfemale]');

@@ -1,14 +1,8 @@
 import { test, expect, Page, firefox } from "@playwright/test";
 import { selectCategory } from ".././Resources/page-objects/homepage.ts";
 import {
-  automobileLocator,
-  camperLocator,
-  truckLocator,
-  motorcycleLocator,
   selectedInsuranceLocator,
-  tricentisLogoLocator,
 } from ".././Resources/locators/pageLocators.ts";
-import { validateHomepage } from "../tests/validateHomepage.spec.ts";
 import {
   fillDataForms,
   fillDataFormsFromCSV,
@@ -85,8 +79,8 @@ test.describe("Form - Enter Vehicle Data - From CSV", () => {
         await fillDataFormsFromCSV[`${category}`](page, category);
         await page.screenshot({ path: `screenshots/${category}.png` });
         await nextPage(page);
-        await fillInsurantsData[`Insurants`];
-        await page.screenshot({ path: `screenshots/insurants.png` });
+        await fillInsurantsData.Insurants(page, category);
+        
       }
     });
   });
