@@ -1,0 +1,17 @@
+export const FIRST_NAME = (page) => (page).locator('input[id=firstName]');
+export const LAST_NAME = (page) => (page).locator('input[id=lastName]');
+export const BIRTH_DATE = (page) => (page).locator('input[id=birthdate]');
+export const GENDER_MALE = (page) => (page).locator('input[id=gendermale]');
+export const GENDER_FEMALE = (page) => (page).locator('input[id=genderfemale]');
+export const streetaddress = (page) => (page).locator('input[id=streetaddress]');
+export const country = (page) => (page).locator('select[id=country]');
+export const zipcode = (page) => (page).locator('input[id=zipcode]');
+export const city = (page) => (page).locator('input[id=city]');
+export const occupation = (page) => (page).locator('select[id=occupation]');
+export const speeding = (page) => (page).locator('input[id=speeding');
+export const bungeejumping = (page) => (page).locator('input[id=bungeejumping]');
+export const cliffdiving = (page) => (page).locator('input[id=cliffdiving]');
+export const skydiving = (page) => (page).locator('input[id=skydiving]');
+export const other = (page) => (page).locator('input[id=oder]');
+export const website = (page) => (page).locator('input[id=website]');
+export const pictureButtonUpload = (page) => (page).locator('button[id=open]');

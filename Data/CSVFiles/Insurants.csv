@@ -1,3 +1,5 @@
+FIRST_NAME,LAST_NAME,DATE_OF_BIRTH,GENDER,STREET_ADDRESS,COUNTRY,ZIP_CODE,CITY,OCCUPATION,HOBBIES,WEBSITE,PICTURE
+
 John,Doe,01/01/1984,gendermale,123 Main St,Portugal,12345,Lisbon,Employee,Speeding,https://github.com/Miguel-Barca,path/to/picture.jpg
 Alice,Smith,05/12/1990,genderfemale,456 Oak St,Spain,56789,Madrid,Unemployed,Cliff Diving,https://github.com/Miguel-Barca,path/to/alice.jpg
 Bob,Johnson,09/23/1988,gendermale,789 Pine St,Italy,98765,Rome,Selfemployed,Skydiving,https://github.com/Miguel-Barca,path/to/bob.jpg

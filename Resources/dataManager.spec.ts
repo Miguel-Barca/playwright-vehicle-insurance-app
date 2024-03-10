@@ -3,6 +3,7 @@ import { parse } from 'csv-parse/sync';
 
 export const recordsMotorcycle  : any[] = [];
 export const recordsAutomobile  : any[] = [];
+export const recordsInsurants  : any[] = [];
 
 const path = require('path');
 
@@ -16,6 +17,11 @@ const automobileParsedData = parse(fs.readFileSync(path.join('/Users/miguelbarca
     skip_empty_lines: true
 });
 
+const insurantsParsedData = parse(fs.readFileSync(path.join('/Users/miguelbarca/TestAutomation/playwright-vehicle-insurance-app/Data/CSVFiles/', 'Insurants.csv')), {
+    columns: true,
+    skip_empty_lines: true
+});
+
 export function readMotorcycleCsv() {
     for (const record of motorcycleParsedData) {
         recordsMotorcycle.push(record);
@@ -24,8 +30,13 @@ export function readMotorcycleCsv() {
 
 export function readAutomobileCsv() {
     for (const record of automobileParsedData) {
-        //console.log(record);
         recordsAutomobile.push(record);
+    }
+};
+
+export function readInsurantsCsv() {
+    for (const record of insurantsParsedData) {
+        recordsInsurants.push(record);
     }
 };
 

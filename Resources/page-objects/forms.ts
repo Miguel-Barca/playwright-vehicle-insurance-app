@@ -1,5 +1,6 @@
-import { readAutomobileCsv, readMotorcycleCsv, recordsAutomobile, recordsMotorcycle } from '../dataManager.spec';
+import { readAutomobileCsv, readInsurantsCsv, readMotorcycleCsv, recordsAutomobile, recordsInsurants, recordsMotorcycle } from '../dataManager.spec';
 import * as vehicleDataFormLocators from '../locators/vehicleDataFormLocators';
+import * as insurantDataFormLocators from '../locators/insurantDataLocators';
 import { Page } from '@playwright/test';
 
 export const fillDataForms = {
@@ -48,6 +49,7 @@ export const fillDataFormsFromCSV = {
             await vehicleDataFormLocators.ANNUAL_MILEAGE(page).fill(record.ANNUAL_MILEAGE);
         }
     },
+
     Automobile: async (page: Page, category: string) => {
         readAutomobileCsv();
 
@@ -70,6 +72,28 @@ export const fillDataFormsFromCSV = {
     // Add more categories as needed
 };
 
+export const fillInsurantsData = {
+    Insurants: async (page: Page) => {
+        readInsurantsCsv();
+
+        //Grab data from Datamanager and fill form
+        for (const record of recordsInsurants) {
+            await  insurantDataFormLocators.FIRST_NAME(page).fill(record.FIRST_NAME);
+            await  insurantDataFormLocators.LAST_NAME(page).fill(record.LAST_NAME);
+            await  insurantDataFormLocators.BIRTH_DATE(page).fill(record.DATE_OF_BIRTH);
+            //await  insurantDataFormLocators.GENDER_FEMALE(page).fill(record.DATE_OF_BIRTH);
+            await  insurantDataFormLocators.streetaddress(page).fill(record.STREET_ADDRESS);
+            await  insurantDataFormLocators.country(page).fill(record.COUNTRY);
+            await  insurantDataFormLocators.city(page).fill(record.CITY);
+            await  insurantDataFormLocators.occupation(page).click().select(record.OCCUPATION);
+            //await  insurantDataFormLocators.todo(page).select(record.HOBBIES);
+            await  insurantDataFormLocators.website(page).fill(record.WEBSITE);
+
+            //FIRST_NAME,LAST_NAME,DATE_OF_BIRTH,GENDER,STREET_ADDRESS,COUNTRY,,OCCUPATION,HOBBIES,
+        }
+    }
+};
+
 export async function nextPage(page: Page) {
     await page.getByRole('button', { name: 'Next »' }).click();
-}
+};
