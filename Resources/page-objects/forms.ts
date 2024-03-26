@@ -4,7 +4,6 @@ import * as insurantDataFormLocators from '../locators/insurantDataLocators';
 import { Page } from '@playwright/test';
 
 let counterForInsurantsCSV = 0;
-let counterForVehiclesCSV = 0;
 
 export const fillDataForms = {
     Motorcycle: async (page: Page, category: string) => {
